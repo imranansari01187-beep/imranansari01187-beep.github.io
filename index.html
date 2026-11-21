@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imran Ansari — Aspiring US IT Recruiter | Portfolio & Sourcing Lab</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #fafafa;
+      background-image:
+        linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    html.dark body {
+      background-color: #090d16;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 15%, rgba(225, 29, 72, 0.10), transparent 60%);
+    }
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #resumePrintArea, #resumePrintArea * {
+        visibility: visible;
+      }
+      #resumePrintArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #ffffff !important;
+        color: #111827 !important;
+        padding: 24px !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="text-slate-900 dark:text-slate-100 antialiased transition-colors duration-200">
+
+  <!-- Top Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200/70 dark:border-slate-800/80">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center text-2xl font-extrabold tracking-tight">
+        <span class="inline-block w-1.5 h-6 bg-brand-600 rounded-full mr-1.5"></span>
+        <span>mran<span class="text-brand-600">.</span></span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <a href="#about" class="hover:text-brand-600 transition">About</a>
+        <a href="#sourcing-lab" class="hover:text-brand-600 transition">Sourcing Lab</a>
+        <a href="#experience" class="hover:text-brand-600 transition">Experience</a>
+        <a href="#certifications" class="hover:text-brand-600 transition">Certifications</a>
+        <button onclick="openResumeModal()" class="text-brand-600 font-semibold hover:underline">ATS Resume</button>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button id="themeToggle" aria-label="Toggle Dark Mode" class="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:border-brand-600 transition shadow-sm">
+          <svg id="moonIcon" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+          <svg id="sunIcon" class="w-4 h-4 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path stroke-linecap="round" d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </button>
+        <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 pt-2 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 space-y-2 text-sm font-medium">
+      <a href="#about" class="block py-1.5 hover:text-brand-600">About</a>
+      <a href="#sourcing-lab" class="block py-1.5 hover:text-brand-600">Sourcing Lab</a>
+      <a href="#experience" class="block py-1.5 hover:text-brand-600">Experience</a>
+      <a href="#certifications" class="block py-1.5 hover:text-brand-600">Certifications</a>
+      <button onclick="openResumeModal()" class="block py-1.5 text-brand-600 font-semibold">View ATS Resume PDF</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-glow pt-10 pb-16 sm:pt-14 sm:pb-20 px-4 sm:px-6">
+    <div class="max-w-3xl mx-auto text-center">
+
+      <!-- Portrait Frame with Actual Photo -->
+      <div class="mx-auto w-56 h-56 sm:w-64 sm:h-64 rounded-3xl p-1.5 bg-slate-900 dark:bg-slate-800 shadow-2xl ring-4 ring-white dark:ring-slate-900 overflow-hidden mb-7">
+        <img
+          src="data:image/jpeg;base64,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"
+          alt="Imran Ansari — Aspiring US IT Recruiter"
+          class="w-full h-full object-cover object-top rounded-2xl"
+        />
+      </div>
+
+      <!-- Availability Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-500/10 border border-brand-200/80 dark:border-brand-500/30 text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200 mb-5 shadow-sm">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Open to new opportunities &middot; EST / PST Ready</span>
+      </div>
+
+      <!-- Role Label -->
+      <p class="font-mono text-sm sm:text-base tracking-wide text-slate-500 dark:text-slate-400 mb-3">
+        Aspiring US IT Recruiter
+      </p>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white mb-5">
+        I source <span class="text-brand-600">top IT talent</span> &amp; streamline <span class="text-brand-600">US staffing pipelines.</span>
+      </h1>
+
+      <!-- Bio Paragraph -->
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
+        Hi, I'm <strong class="text-slate-900 dark:text-white">Imran Ansari</strong> (He/Him). Certified Technical Recruiter &amp; Talent Acquisition Specialist trained in
+        <strong class="text-slate-900 dark:text-white">Boolean &amp; Google X-Ray Sourcing</strong>,
+        <strong class="text-slate-900 dark:text-white">W2 / C2C / CTH</strong> hiring models, Excel margin math, and ClickUp ATS workflows — seeking Recruiter Intern or Trainee roles.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3.5">
+        <a href="#sourcing-lab" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-lg shadow-brand-600/25 transition">
+          Explore Sourcing Lab &darr;
+        </a>
+        <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 hover:border-brand-600 text-slate-800 dark:text-slate-100 font-semibold text-sm shadow-sm transition">
+          View / Print ATS Resume
+        </button>
+        <a href="#contact" class="px-6 py-3 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-semibold text-sm transition">
+          Contact / Hire Me &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Core Competencies -->
+  <section id="about" class="py-14 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-10 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6 mb-6">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-wider text-brand-600 font-semibold">Profile Overview</span>
+            <h2 class="text-2xl sm:text-3xl font-bold mt-1">LinkedIn &amp; Staffing Readiness</h2>
+          </div>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Daltonganj, Jharkhand (Remote Ready)</span>
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-500/30">Immediate Joiner</span>
+          </div>
+        </div>
+
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+          BBA student with 3+ years of campus leadership and student outreach experience, transitioning into US IT Staffing with verified training in Technical Recruitment and Talent Acquisition. Unlike a traditional fresher, I have built a practical recruitment portfolio covering end-to-end candidate sourcing across 7 IT verticals, US work authorization screening, Bill Rate vs. Pay Rate spread calculation, and structured ATS pipeline management.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70">
+            <div class="text-brand-600 font-mono text-xs font-semibold mb-1.5">01 / SOURCING</div>
+            <h3 class="font-bold text-base mb-1">Boolean &amp; X-Ray</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">AND, OR, NOT operators, site:linkedin.com/in strings, passive talent mapping across Java, Cloud, DevOps &amp; Data.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70">
+            <div class="text-brand-600 font-mono text-xs font-semibold mb-1.5">02 / US COMPLIANCE</div>
+            <h3 class="font-bold text-base mb-1">W2, C2C &amp; Visas</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Practical grasp of W2, Corp-to-Corp, 1099, CTH terms and USC, GC, H1B, OPT/CPT, TN &amp; EAD authorizations.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70">
+            <div class="text-brand-600 font-mono text-xs font-semibold mb-1.5">03 / EXCEL &amp; MATH</div>
+            <h3 class="font-bold text-base mb-1">Margin &amp; Tracking</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Bill Rate &minus; Pay Rate spread math, W2 burden estimation, data cleansing (TRIM/PROPER), and submission sheets.</p>
+          </div>
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70">
+            <div class="text-brand-600 font-mono text-xs font-semibold mb-1.5">04 / ATS WORKFLOWS</div>
+            <h3 class="font-bold text-base mb-1">ClickUp &amp; Bitrix24</h3>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">Kanban candidate pipelines, custom screening fields, form intake views, and onboarding checklist templates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive US IT Sourcing Lab -->
+  <section id="sourcing-lab" class="py-14 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="font-mono text-xs uppercase tracking-wider text-brand-600 font-semibold">Interactive Portfolio Proof</span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold mt-1">US IT Recruiter Practical Lab</h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-2">
+          Test my ready-to-deploy Boolean/X-Ray sourcing strings, simulate W2 vs. C2C staffing margins, and inspect my ClickUp hiring workflow.
+        </p>
+      </div>
+
+      <!-- Lab Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-6">
+        <button onclick="switchLabTab('boolean')" id="tab-boolean" class="lab-tab px-5 py-2.5 rounded-xl text-sm font-semibold bg-brand-600 text-white shadow-sm transition">
+          1. Boolean &amp; X-Ray Strings
+        </button>
+        <button onclick="switchLabTab('margin')" id="tab-margin" class="lab-tab px-5 py-2.5 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-brand-600 transition">
+          2. W2 / C2C Margin Calculator
+        </button>
+        <button onclick="switchLabTab('clickup')" id="tab-clickup" class="lab-tab px-5 py-2.5 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-brand-600 transition">
+          3. ClickUp ATS Pipeline
+        </button>
+      </div>
+
+      <!-- Panel 1: Boolean & X-Ray Lab -->
+      <div id="panel-boolean" class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-wrap gap-2 mb-6" id="roleButtons"></div>
+
+        <div class="grid md:grid-cols-3 gap-4 mb-5">
+          <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 font-mono">TARGET ROLE</div>
+            <div id="roleTitle" class="font-bold text-sm mt-0.5"></div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 font-mono">PREFERRED TAX / VISA</div>
+            <div id="roleVisa" class="font-bold text-sm mt-0.5 text-brand-600"></div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+            <div class="text-xs text-slate-500 font-mono">MUST-HAVE STACK</div>
+            <div id="roleStack" class="font-bold text-sm mt-0.5"></div>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-mono font-semibold uppercase text-slate-500">LinkedIn Recruiter / Job Board Boolean String</span>
+              <button onclick="copyText('booleanOutput', this)" class="text-xs font-semibold px-3 py-1 rounded-lg bg-brand-50 dark:bg-brand-500/10 text-brand-600 hover:bg-brand-100 transition">Copy Boolean</button>
+            </div>
+            <pre id="booleanOutput" class="p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-mono font-semibold uppercase text-slate-500">Google X-Ray Search String (Free Passive Sourcing)</span>
+              <button onclick="copyText('xrayOutput', this)" class="text-xs font-semibold px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-brand-600 transition">Copy X-Ray</button>
+            </div>
+            <pre id="xrayOutput" class="p-4 rounded-2xl bg-slate-950 text-sky-300 font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Margin Calculator -->
+      <div id="panel-margin" class="hidden bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4">
+            <h3 class="text-xl font-bold">US Staffing Margin &amp; Burden Simulator</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+              In US IT Staffing, W2 hires carry employer payroll taxes/benefits (~18% burden), whereas C2C/1099 contractors are billed flat. Adjust rates below to verify net agency spread:
+            </p>
+
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase text-slate-500 mb-1">Client Bill Rate ($ / hr)</label>
+              <input type="number" id="billRateInput" value="85" min="10" max="300" oninput="updateMarginCalc()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold text-base" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase text-slate-500 mb-1">Candidate Pay Rate ($ / hr)</label>
+              <input type="number" id="payRateInput" value="58" min="10" max="300" oninput="updateMarginCalc()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-mono font-bold text-base" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-semibold uppercase text-slate-500 mb-1">Tax / Hiring Model</label>
+              <select id="taxModelInput" onchange="updateMarginCalc()" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 font-semibold text-sm">
+                <option value="c2c">Corp-to-Corp (C2C) / 1099 — 0% Employer Burden</option>
+                <option value="w2">W2 Hourly — 18% Payroll Tax &amp; Burden Load</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <div class="text-xs font-mono text-slate-500">LOADED PAY RATE</div>
+                <div id="loadedPayOut" class="font-mono text-xl font-bold mt-1">$58.00/hr</div>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-500">NET HOURLY MARGIN</div>
+                <div id="netMarginOut" class="font-mono text-2xl font-extrabold text-emerald-600 mt-1">$27.00/hr</div>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-500">GROSS MARGIN %</div>
+                <div id="marginPctOut" class="font-mono text-xl font-bold mt-1">31.8%</div>
+              </div>
+              <div>
+                <div class="text-xs font-mono text-slate-500">EST. MONTHLY SPREAD</div>
+                <div id="monthlySpreadOut" class="font-mono text-xl font-bold text-brand-600 mt-1">$4,320</div>
+              </div>
+            </div>
+
+            <div id="marginHealthBox" class="mt-5 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+              <p id="marginHealthText" class="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                Healthy staffing spread — Strong submission margin ready for Account Manager approval.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: ClickUp ATS Pipeline -->
+      <div id="panel-clickup" class="hidden bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-6">
+          <div>
+            <h3 class="text-lg font-bold">ClickUp Recruitment &amp; Onboarding Board Architecture</h3>
+            <p class="text-xs text-slate-500">Workspace &rarr; HR Space &rarr; US IT Staffing Folder &rarr; Candidate Pipeline List</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 font-mono text-xs font-semibold">UPenn Coursera Project Applied</span>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border-t-4 border-slate-400">
+            <div class="font-mono text-xs font-bold uppercase text-slate-500 mb-3">01. Sourced / Form Intake</div>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="font-bold">Sr. Java Microservices Dev</div>
+                <div class="text-slate-500 mt-1">Source: LinkedIn X-Ray &middot; USC</div>
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="font-bold">AWS DevOps Terraform Eng</div>
+                <div class="text-slate-500 mt-1">Source: ClickUp Form &middot; GC</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border-t-4 border-amber-500">
+            <div class="font-mono text-xs font-bold uppercase text-amber-600 mb-3">02. Recruiter Screening</div>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="font-bold">Snowflake Data Engineer</div>
+                <div class="text-slate-500 mt-1">Rate Locked: $65/hr C2C &middot; RTR Sent</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border-t-4 border-sky-500">
+            <div class="font-mono text-xs font-bold uppercase text-sky-600 mb-3">03. Client Submission</div>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="font-bold">Playwright SDET Lead</div>
+                <div class="text-slate-500 mt-1">Bill: $82/hr &middot; L1 Tech Interview</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border-t-4 border-emerald-500">
+            <div class="font-mono text-xs font-bold uppercase text-emerald-600 mb-3">04. Hired &rarr; Onboarding</div>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div class="font-bold">Auto-Triggered Checklist</div>
+                <div class="text-slate-500 mt-1">&check; MSA/PO &check; BGV &check; Day-1 Setup</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience & Campus Leadership -->
+  <section id="experience" class="py-14 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-8">
+        <span class="font-mono text-xs uppercase tracking-wider text-brand-600 font-semibold">Track Record</span>
+        <h2 class="text-2xl sm:text-3xl font-bold mt-1">Recruitment Portfolio &amp; Leadership Experience</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">US IT Recruitment Portfolio (Self-Trained Practical Simulation)</h3>
+            <span class="font-mono text-xs px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-500/10 text-brand-600 font-semibold">2026 &ndash; Present</span>
+          </div>
+          <p class="text-xs font-mono text-slate-500 mb-3">Remote Staffing Lab &middot; Boolean Sourcing, Excel Control Room &amp; ATS Workflows</p>
+          <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+            <li>Constructed Boolean and Google X-Ray search strings across 7 core IT verticals (Java, DevOps, Data Engineering, QA, Cloud, .NET, Cybersecurity).</li>
+            <li>Executed end-to-end Excel recruitment tracking: raw rate cleansing, status filtering, and W2/C2C Bill Rate vs. Pay Rate margin calculations.</li>
+            <li>Designed structured candidate pipelines and onboarding checklist templates using ClickUp and explored Bitrix24 ATS workflows.</li>
+          </ul>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Internshala Student Partner (ISP)</h3>
+            <span class="font-mono text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">2026 &ndash; Present</span>
+          </div>
+          <p class="text-xs font-mono text-slate-500 mb-3">Internshala &middot; Campus Outreach &amp; Talent Engagement</p>
+          <ul class="list-disc list-inside text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+            <li>Represented Internshala across college networks, driving student registrations for internships, career programs, and national drives.</li>
+            <li>Managed peer communication channels, resolved candidate queries, and tracked outreach conversions.</li>
+          </ul>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="text-base font-bold">Campus Student Coordinator — Sibaq Arts Fest</h3>
+              <span class="font-mono text-xs text-slate-500">2023 &ndash; 2026</span>
+            </div>
+            <p class="text-xs font-mono text-brand-600 mb-2">NIICS Campus, Darul Huda Islamic University</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Coordinated the NIICS campus delegation across multiple national competition categories, handling participant shortlisting, registration tracking, and schedule briefings.</p>
+          </div>
+
+          <div class="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <h3 class="text-base font-bold">Chairman — Urdu Club (Anjuman-e-Huda)</h3>
+              <span class="font-mono text-xs text-slate-500">2023 &ndash; 2026</span>
+            </div>
+            <p class="text-xs font-mono text-brand-600 mb-2">3 Consecutive Elected Terms &middot; NIICS, DHIU</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300">Led student teams for three consecutive terms, organizing debates, literary seminars, volunteer delegation, and public speaking engagements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verified Licenses & Certifications + Education -->
+  <section id="certifications" class="py-14 px-4 sm:px-6">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-3 gap-6">
+
+      <!-- Certifications (2 cols) -->
+      <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <span class="font-mono text-xs uppercase tracking-wider text-brand-600 font-semibold">Verified Credentials</span>
+        <h2 class="text-2xl font-bold mt-1 mb-6">Licenses &amp; Certifications</h2>
+
+        <div class="space-y-4">
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-base">Technical Recruiter Certification</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Talent Hub Solutions &middot; Issued Oct 2026</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Credential ID: 6ac4cfbd2a521</div>
+            </div>
+            <span class="self-start sm:self-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-mono text-xs font-semibold">Verified</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-base">Talent Acquisition Specialist</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Talent Hub Solutions &middot; Issued Nov 2026</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Skills: Talent Acquisition &middot; End-to-End Hiring</div>
+            </div>
+            <span class="self-start sm:self-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-mono text-xs font-semibold">Verified</span>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="font-bold text-base">Hiring and Onboarding Employees with ClickUp</div>
+              <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">University of Pennsylvania &ndash; Coursera &middot; Issued Jan 2025</div>
+              <div class="font-mono text-xs text-slate-500 mt-1">Credential ID: 5OUAQBLEWJWL</div>
+            </div>
+            <span class="self-start sm:self-center px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 font-mono text-xs font-semibold">Verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Education (1 col) -->
+      <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <span class="font-mono text-xs uppercase tracking-wider text-brand-600 font-semibold">Academics</span>
+        <h2 class="text-2xl font-bold mt-1 mb-6">Education</h2>
+
+        <div class="space-y-5">
+          <div class="border-l-2 border-brand-600 pl-4">
+            <div class="font-bold text-sm">Bachelor of Business Administration (BBA)</div>
+            <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">Indira Gandhi National Open University (IGNOU)</div>
+            <div class="font-mono text-xs text-brand-600 mt-1">First Year &middot; Pursuing</div>
+          </div>
+
+          <div class="border-l-2 border-slate-300 dark:border-slate-700 pl-4">
+            <div class="font-bold text-sm">Foundational &amp; Contemporary Studies</div>
+            <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">National Institute for Islamic and Contemporary Studies (NIICS), DHIU</div>
+            <div class="font-mono text-xs text-slate-500 mt-1">2023 &ndash; 2026</div>
+          </div>
+
+          <div class="border-l-2 border-slate-300 dark:border-slate-700 pl-4">
+            <div class="font-bold text-sm">Senior Secondary (Class XII)</div>
+            <div class="text-xs text-slate-600 dark:text-slate-400 mt-0.5">National Institute of Open Schooling (NIOS)</div>
+            <div class="font-mono text-xs text-emerald-600 font-semibold mt-1">Score: 81%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Hire Me Footer -->
+  <section id="contact" class="py-14 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto bg-slate-900 text-white rounded-3xl p-8 sm:p-12 text-center shadow-xl">
+      <span class="font-mono text-xs uppercase tracking-wider text-brand-500 font-semibold">Let's Connect</span>
+      <h2 class="text-2xl sm:text-4xl font-extrabold mt-2 mb-4">Looking for a Hungry, Self-Trained US IT Recruiter Trainee?</h2>
+      <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8">
+        Available immediately for Remote Recruiter Intern, Trainee Technical Recruiter, or Talent Sourcing roles across US (EST/PST) or Indian staffing teams.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-3.5 text-sm font-semibold">
+        <a href="mailto:imranansari01187@gmail.com" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white transition">
+          Email: imranansari01187@gmail.com
+        </a>
+        <a href="tel:+916200228237" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition">
+          Call / WhatsApp: +91 6200228237
+        </a>
+        <button onclick="openResumeModal()" class="px-6 py-3 rounded-xl bg-white text-slate-900 hover:bg-slate-100 transition">
+          Download ATS Resume PDF
+        </button>
+      </div>
+
+      <div class="mt-10 pt-6 border-t border-slate-800 text-xs text-slate-400 font-mono">
+        &copy; 2026 Imran Ansari &middot; US IT Recruitment &amp; Talent Acquisition Portfolio
+      </div>
+    </div>
+  </section>
+
+  <!-- Printable ATS Resume Modal -->
+  <div id="resumeModal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-sm overflow-y-auto p-4 sm:p-8">
+    <div class="max-w-3xl mx-auto bg-white text-slate-900 rounded-2xl shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-6 py-4 bg-slate-100 border-b border-slate-200">
+        <span class="font-mono text-xs font-bold uppercase text-slate-600">ATS-Optimized Corporate Resume Preview</span>
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-4 py-1.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold">
+            Print / Save as PDF
+          </button>
+          <button onclick="closeResumeModal()" class="px-3 py-1.5 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-semibold">
+            Close &times;
+          </button>
+        </div>
+      </div>
+
+      <div id="resumePrintArea" class="p-6 sm:p-10 text-sm leading-relaxed space-y-5">
+        <div class="border-b-2 border-slate-900 pb-3">
+          <h1 class="text-2xl font-extrabold tracking-tight uppercase">Imran Ansari</h1>
+          <p class="font-semibold text-brand-700 text-xs uppercase tracking-wide mt-0.5">Aspiring US IT Recruiter | Boolean &amp; X-Ray Sourcing | W2 / C2C / CTH</p>
+          <p class="text-xs text-slate-600 mt-1">Daltonganj, Jharkhand, India (Remote / US Shift Ready) | +91 6200228237 | imranansari01187@gmail.com</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">Professional Summary</h2>
+          <p class="text-xs text-slate-700">
+            Certified Technical Recruiter and Talent Acquisition Specialist (Talent Hub Solutions) with hands-on practical training in US IT Staffing workflows, Boolean and Google X-Ray sourcing across 7 IT domains, W2/C2C/1099 engagement models, visa authorization screening, Excel margin calculations, and ClickUp hiring/onboarding pipelines. Supported by 3+ years of campus leadership and student outreach experience.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">Core Recruitment &amp; HR Competencies</h2>
+          <div class="grid sm:grid-cols-2 gap-1.5 text-xs text-slate-700">
+            <div><strong>Sourcing:</strong> Boolean Strings, Google X-Ray, LinkedIn Recruiter</div>
+            <div><strong>US Hiring Models:</strong> W2, Corp-to-Corp (C2C), 1099, CTH</div>
+            <div><strong>Work Authorizations:</strong> USC, Green Card, H1B, OPT/CPT, TN, EAD</div>
+            <div><strong>Tools &amp; ATS:</strong> MS Excel (Margins/Filters), ClickUp, Bitrix24, Canva</div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">Licenses &amp; Certifications</h2>
+          <ul class="text-xs text-slate-700 space-y-1">
+            <li><strong>Technical Recruiter Certification</strong> — Talent Hub Solutions (Credential ID: 6ac4cfbd2a521)</li>
+            <li><strong>Talent Acquisition Specialist</strong> — Talent Hub Solutions</li>
+            <li><strong>Hiring and Onboarding Employees with ClickUp</strong> — University of Pennsylvania (Coursera, ID: 5OUAQBLEWJWL)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">Practical Recruitment Portfolio &amp; Leadership Experience</h2>
+          <div class="space-y-3 text-xs text-slate-700">
+            <div>
+              <div class="flex justify-between font-bold text-slate-900">
+                <span>US IT Recruitment Portfolio (Practical Simulation)</span>
+                <span>2026 &ndash; Present</span>
+              </div>
+              <ul class="list-disc list-inside mt-1 space-y-0.5">
+                <li>Built Boolean and Google X-Ray search strings for Java, DevOps, Data Engineering, Cloud, QA, .NET, and Cybersecurity roles.</li>
+                <li>Managed Excel submission control sheets: standardized raw rate data, filtered active submissions, and computed net hourly agency margins.</li>
+                <li>Configured ClickUp Kanban hiring stages and automated onboarding checklists.</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-900">
+                <span>Internshala Student Partner (ISP) — Internshala</span>
+                <span>2026 &ndash; Present</span>
+              </div>
+              <p class="mt-0.5">Executed campus talent outreach campaigns, guided student applicants, and managed peer communication groups.</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between font-bold text-slate-900">
+                <span>Campus Student Coordinator (Sibaq) &amp; Chairman (Urdu Club) — NIICS, DHIU</span>
+                <span>2023 &ndash; 2026</span>
+              </div>
+              <p class="mt-0.5">Led campus delegation registrations, participant shortlisting, and three consecutive terms of student club governance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-300 pb-1 mb-2">Education</h2>
+          <ul class="text-xs text-slate-700 space-y-1">
+            <li><strong>Bachelor of Business Administration (BBA)</strong> — Indira Gandhi National Open University (IGNOU) | Pursuing</li>
+            <li><strong>Foundational &amp; Contemporary Academic Studies</strong> — NIICS, Darul Huda Islamic University (2023 &ndash; 2026)</li>
+            <li><strong>Senior Secondary (Class XII)</strong> — National Institute of Open Schooling (NIOS) | 81%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1. Dark / Light Theme Toggle
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const moonIcon = document.getElementById('moonIcon');
+    const sunIcon = document.getElementById('sunIcon');
+
+    function applyTheme(dark) {
+      if (dark) {
+        htmlEl.classList.add('dark');
+        moonIcon.classList.add('hidden');
+        sunIcon.classList.remove('hidden');
+      } else {
+        htmlEl.classList.remove('dark');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('imran_portfolio_theme');
+    applyTheme(savedTheme === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = !htmlEl.classList.contains('dark');
+      localStorage.setItem('imran_portfolio_theme', isDark ? 'dark' : 'light');
+      applyTheme(isDark);
+    });
+
+    // Mobile Menu
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // 2. Lab Tabs
+    function switchLabTab(tabName) {
+      ['boolean', 'margin', 'clickup'].forEach(t => {
+        document.getElementById('panel-' + t).classList.add('hidden');
+        const btn = document.getElementById('tab-' + t);
+        btn.className = 'lab-tab px-5 py-2.5 rounded-xl text-sm font-semibold bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-brand-600 transition';
+      });
+      document.getElementById('panel-' + tabName).classList.remove('hidden');
+      const activeBtn = document.getElementById('tab-' + tabName);
+      activeBtn.className = 'lab-tab px-5 py-2.5 rounded-xl text-sm font-semibold bg-brand-600 text-white shadow-sm transition';
+    }
+
+    // 3. Boolean & X-Ray Data (7 Core IT Domains)
+    const sourcingRoles = {
+      java: {
+        label: 'Java Full Stack',
+        title: 'Senior Java Microservices Developer',
+        visa: 'USC / GC / H1B (C2C or W2)',
+        stack: 'Java 17, Spring Boot, Microservices, Kafka, AWS',
+        boolean: '("Java Developer" OR "Java Engineer" OR "Full Stack Java") AND ("Spring Boot" OR "Springboot") AND ("Microservices") AND ("Kafka" OR "RabbitMQ") AND ("AWS" OR "Azure") NOT ("Recruiter" OR "Bench Sales")',
+        xray: 'site:linkedin.com/in/ ("Java Developer" OR "Software Engineer") "Spring Boot" "Microservices" "AWS" ("United States" OR "TX" OR "NJ" OR "CA") -intitle:jobs'
+      },
+      devops: {
+        label: 'DevOps / Cloud',
+        title: 'AWS DevOps & Kubernetes Engineer',
+        visa: 'USC / GC / EAD (W2 / C2C)',
+        stack: 'AWS, Terraform, Kubernetes (EKS), Docker, CI/CD',
+        boolean: '("DevOps Engineer" OR "Site Reliability Engineer" OR "Cloud Engineer") AND ("Terraform") AND ("Kubernetes" OR "K8s" OR "EKS") AND ("Jenkins" OR "GitHub Actions") AND ("AWS") NOT ("Manager" OR "Intern")',
+        xray: 'site:linkedin.com/in/ ("DevOps Engineer" OR "SRE") "Terraform" "Kubernetes" "AWS" ("United States" OR "Remote") -intitle:jobs'
+      },
+      data: {
+        label: 'Data Engineering',
+        title: 'Cloud Data Engineer (Snowflake / Databricks)',
+        visa: 'USC / GC / H1B / TN',
+        stack: 'Python, SQL, Snowflake, Databricks, PySpark, Airflow',
+        boolean: '("Data Engineer" OR "Big Data Engineer") AND ("Snowflake" OR "Databricks") AND ("PySpark" OR "Spark") AND ("Python") AND ("SQL") AND ("Airflow" OR "ETL")',
+        xray: 'site:linkedin.com/in/ "Data Engineer" ("Snowflake" OR "Databricks") "PySpark" "Python" ("United States" OR "NY" OR "IL") -intitle:jobs'
+      },
+      qa: {
+        label: 'QA Automation',
+        title: 'SDET / QA Automation Lead',
+        visa: 'USC / GC / H1B / OPT-EAD',
+        stack: 'Selenium, Playwright, Cypress, Java/TypeScript, API',
+        boolean: '("SDET" OR "QA Automation" OR "Test Automation Engineer") AND ("Playwright" OR "Selenium" OR "Cypress") AND ("API Testing" OR "RestAssured" OR "Postman") AND ("CI/CD")',
+        xray: 'site:linkedin.com/in/ ("SDET" OR "Automation Engineer") ("Playwright" OR "Selenium") "API" ("United States") -intitle:jobs'
+      },
+      cyber: {
+        label: 'Cybersecurity',
+        title: 'IAM / Cloud Security Analyst',
+        visa: 'USC / GC (W2 / CTH)',
+        stack: 'Okta, SailPoint, SIEM, Splunk, Zero Trust, SOC',
+        boolean: '("Security Engineer" OR "IAM Engineer" OR "Cybersecurity Analyst") AND ("Okta" OR "SailPoint" OR "Azure AD") AND ("Splunk" OR "SIEM") AND ("SOC" OR "NIST")',
+        xray: 'site:linkedin.com/in/ ("Security Engineer" OR "IAM") ("Okta" OR "SailPoint") "Splunk" ("United States") -intitle:jobs'
+      },
+      dotnet: {
+        label: '.NET / Azure',
+        title: '.NET Core & Azure Full Stack Developer',
+        visa: 'USC / GC / H1B (C2C / W2)',
+        stack: 'C#, .NET Core, ASP.NET, Angular/React, Azure',
+        boolean: '(".NET Developer" OR "Dot Net Developer" OR "C# Developer") AND (".NET Core" OR ".NET 6" OR ".NET 8") AND ("Angular" OR "React") AND ("Azure") AND ("SQL Server")',
+        xray: 'site:linkedin.com/in/ (".NET Developer" OR "C#") ".NET Core" "Azure" ("United States") -intitle:jobs'
+      },
+      salesforce: {
+        label: 'Salesforce',
+        title: 'Salesforce Developer / Lightning Architect',
+        visa: 'USC / GC / H1B',
+        stack: 'Apex, LWC, Flows, Sales/Service Cloud, SOQL',
+        boolean: '("Salesforce Developer" OR "Salesforce Engineer") AND ("LWC" OR "Lightning Web Components") AND ("Apex") AND ("SOQL") AND ("Sales Cloud" OR "Service Cloud")',
+        xray: 'site:linkedin.com/in/ "Salesforce Developer" ("LWC" OR "Lightning") "Apex" ("United States") -intitle:jobs'
+      }
+    };
+
+    const roleButtonsEl = document.getElementById('roleButtons');
+    Object.keys(sourcingRoles).forEach(key => {
+      const btn = document.createElement('button');
+      btn.id = 'role-btn-' + key;
+      btn.textContent = sourcingRoles[key].label;
+      btn.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:border-brand-600 transition';
+      btn.onclick = () => selectBooleanRole(key);
+      roleButtonsEl.appendChild(btn);
+    });
+
+    function selectBooleanRole(key) {
+      Object.keys(sourcingRoles).forEach(k => {
+        const b = document.getElementById('role-btn-' + k);
+        b.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-brand-600 transition';
+      });
+      const active = document.getElementById('role-btn-' + key);
+      active.className = 'px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-brand-600 bg-brand-600 text-white shadow-sm transition';
+
+      const data = sourcingRoles[key];
+      document.getElementById('roleTitle').textContent = data.title;
+      document.getElementById('roleVisa').textContent = data.visa;
+      document.getElementById('roleStack').textContent = data.stack;
+      document.getElementById('booleanOutput').textContent = data.boolean;
+      document.getElementById('xrayOutput').textContent = data.xray;
+    }
+
+    function copyText(elementId, btnEl) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text);
+      const orig = btnEl.textContent;
+      btnEl.textContent = 'Copied!';
+      setTimeout(() => btnEl.textContent = orig, 1500);
+    }
+
+    // 4. Margin Calculator
+    function updateMarginCalc() {
+      const bill = parseFloat(document.getElementById('billRateInput').value) || 0;
+      const pay = parseFloat(document.getElementById('payRateInput').value) || 0;
+      const model = document.getElementById('taxModelInput').value;
+      const burden = model === 'w2' ? 1.18 : 1.00;
+
+      const loadedPay = pay * burden;
+      const netMargin = bill - loadedPay;
+      const marginPct = bill > 0 ? (netMargin / bill) * 100 : 0;
+      const monthlySpread = netMargin * 160;
+
+      document.getElementById('loadedPayOut').textContent = '$' + loadedPay.toFixed(2) + '/hr';
+      const netEl = document.getElementById('netMarginOut');
+      netEl.textContent = (netMargin >= 0 ? '$' : '-$') + Math.abs(netMargin).toFixed(2) + '/hr';
+      document.getElementById('marginPctOut').textContent = marginPct.toFixed(1) + '%';
+      document.getElementById('monthlySpreadOut').textContent = (monthlySpread >= 0 ? '$' : '-$') + Math.abs(Math.round(monthlySpread)).toLocaleString();
+
+      const box = document.getElementById('marginHealthBox');
+      const txt = document.getElementById('marginHealthText');
+
+      if (netMargin >= 15) {
+        netEl.className = 'font-mono text-2xl font-extrabold text-emerald-600 mt-1';
+        box.className = 'mt-5 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30';
+        txt.className = 'text-xs font-semibold text-emerald-700 dark:text-emerald-300';
+        txt.textContent = 'Healthy staffing spread — Strong submission margin ready for Account Manager approval.';
+      } else if (netMargin > 0) {
+        netEl.className = 'font-mono text-2xl font-extrabold text-amber-500 mt-1';
+        box.className = 'mt-5 p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30';
+        txt.className = 'text-xs font-semibold text-amber-700 dark:text-amber-300';
+        txt.textContent = 'Tight margin — Negotiate candidate rate slightly or confirm Account Manager sign-off.';
+      } else {
+        netEl.className = 'font-mono text-2xl font-extrabold text-rose-600 mt-1';
+        box.className = 'mt-5 p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30';
+        txt.className = 'text-xs font-semibold text-rose-700 dark:text-rose-300';
+        txt.textContent = 'Negative margin alert — Loaded pay rate exceeds Client Bill Rate.';
+      }
+    }
+
+    // 5. Resume Modal
+    function openResumeModal() {
+      document.getElementById('resumeModal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeResumeModal() {
+      document.getElementById('resumeModal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Initialize defaults
+    selectBooleanRole('java');
+    updateMarginCalc();
+  </script>
+</body>
+</html>
